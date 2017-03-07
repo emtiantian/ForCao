@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/semantic.min.css"/>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="css/semantic.min.js" ></script>
+		<script type="text/javascript" src="js/ui.js" ></script>
+		<script type="text/javascript" src="js/main.js" ></script>
+	</head>
+	<body>
+		<!--折叠菜单-->
+		<div class="ui styled fluid accordion">
+		  <div class="title"><i class="dropdown icon"></i> 比较大小</div>
+		  <div class="content">
+		    <p class="transition hidden">
+		    	<form class="ui form formOne">
+  					<h4 class="ui dividing header">是否大于</h4>
+					<div class="four fields">
+						<div class="field">
+							<label>被比较值</label>
+							<div class="ui fluid search selection dropdown">
+								<input type="hidden" name="beibijiao">
+								<i class="dropdown icon"></i>
+								<div class="default text"></div>
+								<div class="menu">
+									<div class="item" data-value="basic50">这个是50</div>
+									<div class="item" data-value="basic20">这个是20</div>
+								</div>
+							</div>
+						</div>
+						<div class="field">
+							<label>比较值</label>
+							<div class="ui input">
+							  <input type="text" placeholder="请输入数字" name="bijiao">
+							</div>
+						</div>
+						<div class="field">
+							<label>开始比较</label>
+							<div class="ui button submit" tabindex="0">开始比较</div>
+							<div class="ui error message"></div>
+						</div>						
+						<div class="field">
+							<label>结果</label>
+							<div class="ui input">
+							  <input type="text" name = 'result' placeholder="是否大于" disabled="true" >
+							</div>							
+						</div>
+					</div>
+					</form>
+					<form class="ui form formTwo">
+  					<h4 class="ui dividing header">是否大于</h4>
+					<div class="four fields">
+						<div class="field">
+							<label>被比较值</label>
+							<div class="ui input">
+							  <input type="text" placeholder="请输入数字" name="beibijiao">
+							</div>
+						</div>
+						<div class="field">
+							<label>比较值</label>
+							<div class="ui input">
+							  <input type="text" placeholder="请输入数字" name="bijiao">
+							</div>
+						</div>
+						<div class="field">
+							<label>开始比较</label>
+							<div class="ui button submit" tabindex="0">开始比较</div>
+							<div class="ui error message"></div>
+						</div>						
+						<div class="field">
+							<label>结果</label>
+							<div class="ui input">
+							  <input type="text" name = 'result' placeholder="是否大于" disabled="true" >
+							</div>							
+						</div>
+					</div>
+					</form>
+					<div class="field" id = "errordiv">
+						其他比较
+					</div>
+				
+		    </p>
+		  </div>
+		  <div class="title"><i class="dropdown icon"></i> 求和</div>
+		  <div class="content">
+		    <p class="transition hidden">暂未实现</p>
+		  </div>	 
+		</div>
+		
+	</body>
+</html>
