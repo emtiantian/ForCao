@@ -2,8 +2,6 @@
 $(function(){
 	var dataJson = {"basic50":"50","basic20":"20"}
 	function compare(a,b){
-		console.log(a);
-		console.log(b);
 		return parseInt(a)>parseInt(b);
 	}
 	//事件监听

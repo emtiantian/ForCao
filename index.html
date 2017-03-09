@@ -4,90 +4,376 @@
 		<meta charset="utf-8" />
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="css/semantic.min.css"/>
+		<link rel="stylesheet" href="css/main.css" />
 		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
-		<script type="text/javascript" src="css/semantic.min.js" ></script>
+		<script type="text/javascript" src="js/semantic.min.js" ></script>		
 		<script type="text/javascript" src="js/ui.js" ></script>
 		<script type="text/javascript" src="js/main.js" ></script>
 	</head>
 	<body>
-		<!--折叠菜单-->
-		<div class="ui styled fluid accordion">
-		  <div class="title"><i class="dropdown icon"></i> 比较大小</div>
-		  <div class="content">
-		    <p class="transition hidden">
-		    	<form class="ui form formOne">
-  					<h4 class="ui dividing header">是否大于</h4>
-					<div class="four fields">
-						<div class="field">
-							<label>被比较值</label>
-							<div class="ui fluid search selection dropdown">
-								<input type="hidden" name="beibijiao">
-								<i class="dropdown icon"></i>
-								<div class="default text"></div>
-								<div class="menu">
-									<div class="item" data-value="basic50">这个是50</div>
-									<div class="item" data-value="basic20">这个是20</div>
-								</div>
-							</div>
-						</div>
-						<div class="field">
-							<label>比较值</label>
-							<div class="ui input">
-							  <input type="text" placeholder="请输入数字" name="bijiao">
-							</div>
-						</div>
-						<div class="field">
-							<label>开始比较</label>
-							<div class="ui button submit" tabindex="0">开始比较</div>
-							<div class="ui error message"></div>
-						</div>						
-						<div class="field">
-							<label>结果</label>
-							<div class="ui input">
-							  <input type="text" name = 'result' placeholder="是否大于" disabled="true" >
-							</div>							
-						</div>
+	<div class="ui container">
+		<!--<h1 class="ui header">计算</h1>-->
+		<form class="ui form formOne">
+			<h4 class="ui dividing header">填写数据</h4>
+			<div class="four fields orange">
+				<div class="field">
+					<label>用户名称</label>
+					<div class="ui input">
+						<input type="text" placeholder="用户名称" name="A3">
 					</div>
-					</form>
-					<form class="ui form formTwo">
-  					<h4 class="ui dividing header">是否大于</h4>
-					<div class="four fields">
-						<div class="field">
-							<label>被比较值</label>
-							<div class="ui input">
-							  <input type="text" placeholder="请输入数字" name="beibijiao">
-							</div>
-						</div>
-						<div class="field">
-							<label>比较值</label>
-							<div class="ui input">
-							  <input type="text" placeholder="请输入数字" name="bijiao">
-							</div>
-						</div>
-						<div class="field">
-							<label>开始比较</label>
-							<div class="ui button submit" tabindex="0">开始比较</div>
-							<div class="ui error message"></div>
-						</div>						
-						<div class="field">
-							<label>结果</label>
-							<div class="ui input">
-							  <input type="text" name = 'result' placeholder="是否大于" disabled="true" >
-							</div>							
-						</div>
+				</div>
+				<div class="field">
+					<label>合同编号</label>
+					<div class="ui input">
+						<input type="text" placeholder="合同编号" name="D3">
 					</div>
-					</form>
-					<div class="field" id = "errordiv">
-						其他比较
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="G3">
 					</div>
-				
-		    </p>
-		  </div>
-		  <div class="title"><i class="dropdown icon"></i> 求和</div>
-		  <div class="content">
-		    <p class="transition hidden">暂未实现</p>
-		  </div>	 
-		</div>
-		
+				</div>
+				<div class="field">
+					<label>主轴承型号及搭配方式</label>
+					<div class="ui input">
+						<input type="text" placeholder="主轴承型号及搭配方式" name="F5">
+					</div>
+				</div>
+			</div>	
+			<div class="five fields orange">	
+				<div class="field">
+					<label>工作转速(r/min)</label>
+					<div class="ui input">
+						<input type="text" placeholder="请输入数字" name="A5">
+					</div>
+				</div>
+				<div class="field">
+					<label>电机功率(Kw)</label>
+					<div class="ui input">
+						<input type="text" placeholder="请输入数字" name="B5">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机全压(Pa)</label>
+					<div class="ui input">
+						<input type="text" placeholder="请输入数字" name="C5">
+					</div>
+				</div>
+				<div class="field">
+					<label>叶轮直径(mm)</label>				
+					<div class="ui fluid multiple search selection dropdown">
+					  <input name="C6" type="hidden">
+					  <i class="dropdown icon"></i>
+					  <div class="default text">叶轮直径</div>
+					  <div class="menu">
+					    <div class="item" data-value="angular">42217</div>			
+					  </div>
+					</div>
+				</div>
+				<div class="field">
+					<label>轮毂直径(mm)</label>				
+					<div class="ui fluid multiple search selection dropdown">
+					  <input name="C7" type="hidden">
+					  <i class="dropdown icon"></i>
+					  <div class="default text">轮毂直径</div>
+					  <div class="menu">
+					    <div class="item" data-value="angular">2114</div>			
+					  </div>
+					</div>
+				</div>				
+			</div>
+			<h4 class="ui dividing header">基础数据</h4>
+			<div class="eight fields green">
+				<div class="field">
+					<label>用户名称</label>
+					<div class="ui input">
+						<input type="text" placeholder="用户名称" name="A8">
+					</div>
+				</div>
+				<div class="field">
+					<label>合同编号</label>
+					<div class="ui input">
+						<input type="text" placeholder="合同编号" name="B8">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="C8">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="D8">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="E8">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="F8">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="G8">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="H8">
+					</div>
+				</div>
+			</div>
+			<div class="eight fields green">
+				<div class="field">
+					<label>用户名称</label>
+					<div class="ui input">
+						<input type="text" placeholder="用户名称" name="A10">
+					</div>
+				</div>
+				<div class="field">
+					<label>合同编号</label>
+					<div class="ui input">
+						<input type="text" placeholder="合同编号" name="B10">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="C10">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="D10">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="E10">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="F10">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="G10">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="H10">
+					</div>
+				</div>
+			</div>
+			<div class="five fields green">
+				<div class="field">
+					<label>用户名称</label>
+					<div class="ui input">
+						<input type="text" placeholder="用户名称" name="B12">
+					</div>
+				</div>
+				<div class="field">
+					<label>合同编号</label>
+					<div class="ui input">
+						<input type="text" placeholder="合同编号" name="C12">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="D12">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="E12">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="F12">
+					</div>
+				</div>
+			</div>
+			<h4 class="ui dividing header">计算中间数据</h4>
+			<div class="five fields blue">
+				<div class="field">
+					<label>用户名称</label>
+					<div class="ui input">
+						<input type="text" placeholder="用户名称" name="G12">
+					</div>
+				</div>
+				<div class="field">
+					<label>合同编号</label>
+					<div class="ui input">
+						<input type="text" placeholder="合同编号" name="H12">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="A14">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="B14">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="C14">
+					</div>
+				</div>
+			</div>
+			<div class="five fields blue">
+				<div class="field">
+					<label>用户名称</label>
+					<div class="ui input">
+						<input type="text" placeholder="用户名称" name="D14">
+					</div>
+				</div>
+				<div class="field">
+					<label>合同编号</label>
+					<div class="ui input">
+						<input type="text" placeholder="合同编号" name="E14">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="F14">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="G14">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="H14">
+					</div>
+				</div>				
+			</div>
+			<h4 class="ui dividing header">结果</h4>
+			<div class="five fields brown">
+				<div class="field">
+					<label>用户名称</label>
+					<div class="ui input">
+						<input type="text" placeholder="用户名称" name="G12">
+					</div>
+				</div>
+				<div class="field">
+					<label>合同编号</label>
+					<div class="ui input">
+						<input type="text" placeholder="合同编号" name="D15">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="D16">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="D17">
+					</div>
+				</div>
+				<div class="field">
+					<label>风机型号</label>
+					<div class="ui input">
+						<input type="text" placeholder="风机型号" name="D18">
+					</div>
+				</div>			
+			</div>
+			<div class="five fields">
+				<div class="field">
+					<label>结果</label>
+					<div class="ui input">
+						<input type="text" name='G12_result' placeholder="是否合格" disabled="true">
+					</div>
+				</div>
+				<div class="field">
+					<label>结果</label>
+					<div class="ui input">
+						<input type="text" name='D15_result' placeholder="是否合格" disabled="true">
+					</div>
+				</div>
+				<div class="field">
+					<label>结果</label>
+					<div class="ui input">
+						<input type="text" name='D16_result' placeholder="是否合格" disabled="true">
+					</div>
+				</div>
+				<div class="field">
+					<label>结果</label>
+					<div class="ui input">
+						<input type="text" name='D17_result' placeholder="是否合格" disabled="true">
+					</div>
+				</div>
+				<div class="field">
+					<label>结果</label>
+					<div class="ui input">
+						<input type="text" name='D18_result' placeholder="是否合格" disabled="true">
+					</div>
+				</div>
+			</div>
+			<div class="two fields">
+				<div class="field">
+					<button class="ui green basic button" type="submit">计算</button>
+				</div>
+				<div class="field">
+					<button class="ui blue basic button" type="submit">计算及导出excel</button>
+				</div>
+			</div>
+		</form>		
+	</div>
+	
+	
+<!--<div class="field">
+					<label>比较值</label>
+					<div class="ui input">
+						<input type="text" placeholder="请输入数字" name="bijiao">
+					</div>
+				</div>
+				<div class="field">
+					<label>开始比较</label>
+					<div class="ui button submit" tabindex="0">开始比较</div>
+					<div class="ui error message"></div>
+				</div>
+				<div class="field">
+					<label>结果</label>
+					<div class="ui input">
+						<input type="text" name='result' placeholder="是否合格" disabled="true">
+					</div>
+				</div>-->
 	</body>
 </html>

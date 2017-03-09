@@ -1,0 +1,16 @@
+.orange input{
+    /*box-shadow: 0 0 0 1px #f26202 inset!important;*/
+    color:#f26202!important;
+}
+.green input{
+   /* box-shadow: 0 0 0 1px #21BA45 inset!important;*/
+    color:#21BA45!important;
+}
+.brown input{
+   /* box-shadow: 0 0 0 1px #21BA45 inset!important;*/
+    color:#975b33!important;
+}
+.blue input{
+   /* box-shadow: 0 0 0 1px #21BA45 inset!important;*/
+    color:#1678c2!important;
+}  

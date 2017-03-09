@@ -28,4 +28,8 @@ $(function(){
 	    }
 	   
 	});
+	$('.ui.dropdown').dropdown({
+	    allowAdditions: true,
+	    maxSelections:1,
+	});
 })
