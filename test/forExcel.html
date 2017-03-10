@@ -271,11 +271,68 @@
                                 function(m, p) { return c[p]; }) }  
             return function(table, name) {  
                 if (!table.nodeType) table = document.getElementById(table)  
-                var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}  
-                window.location.href = uri + base64(format(template, ctx))  
-            }  
-        })()  
-  
+                var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML
+			}
+		window.location.href = uri + base64(format(template, ctx))
+		}
+		})() 
+		//导出excel数据 response: 数据 mc: 名称
+		
+		function dcexcel(response, mc) {
+			var xls = new ActiveXObject("Excel.Application"); //创建excel的Application对象  
+			xls.visible = true;
+			var xlBook = xls.Workbooks.Add; //增加一个excel的WorkBook对象  
+			var xlsheet = xlBook.Worksheets(1); //增加一个WorkBook的sheet1对象  
+			var x = 0;
+			if((response.split("@")[0].split(",")[0] == "logmodul") || (response.split("@")[0].split(",")[0] == "logzzjg")) {
+				xlsheet.Cells(1, 1).Value = mc;
+				xlsheet.Cells(2, 1).Value = "单位";
+				xlsheet.Cells(2, 2).Value = "现有总数";
+				xlsheet.Cells(2, 3).Value = "新增数量";
+				xlsheet.Cells(3, 1).Value = "全市情况";
+				xlsheet.Cells(3, 2).Value = response.split("@")[0].split(",")[2];
+				xlsheet.Cells(3, 3).Value = response.split("@")[0].split(",")[1];
+				x = 4;
+				for(var i = 1; i < response.split("@").length; i++) {
+					if(response.split("@")[i].split(",")[1] != "台州市局") {
+						var zzjgmc = response.split("@")[i].split(",")[1];
+						var tjxx = response.split("@")[i].split(",")[3]; //统计信息  
+						var xzsl = response.split("@")[i].split(",")[2]; //新增数量  
+						xlsheet.Cells(x, 1).Value = zzjgmc;
+						xlsheet.Cells(x, 2).Value = tjxx;
+						xlsheet.Cells(x, 3).Value = xzsl;
+						x++;
+					}
+				}
+			} else if((response.split("@")[0].split(",")[0] == "pcsmudl") || (response.split("@")[0].split(",")[0] == "pcslog")) {
+				xlsheet.Cells(1, 1).Value = mc;
+				xlsheet.Cells(2, 1).Value = "单位";
+				xlsheet.Cells(2, 2).Value = "现有总数";
+				xlsheet.Cells(2, 3).Value = "新增数量";
+				x = 3;
+				for(var i = 1; i < response.split("@").length; i++) {
+					var zzjgmc = response.split("@")[i].split(",")[1];
+					var tjxx = response.split("@")[i].split(",")[3]; //统计信息  
+					var xzsl = response.split("@")[i].split(",")[2]; //新增数量  
+					xlsheet.Cells(x, 1).Value = zzjgmc;
+					xlsheet.Cells(x, 2).Value = tjxx;
+					xlsheet.Cells(x, 3).Value = xzsl;
+					x++;
+				}
+			} else if(response.split("@")[0].split(",")[0] == "logpersion") {
+				xlsheet.Cells(1, 1).Value = mc;
+				xlsheet.Cells(2, 1).Value = "姓名";
+				xlsheet.Cells(2, 2).Value = "访问次数";
+				x = 3;
+				for(var i = 1; i < response.split("@").length; i++) {
+					var xm = response.split("@")[i].split(",")[0]; //访客姓名  
+					var fwcs = response.split("@")[i].split(",")[2]; //访问次数  
+					xlsheet.Cells(x, 1).Value = xm;
+					xlsheet.Cells(x, 2).Value = fwcs;
+					x++;
+				}
+			}
+		}
     </script>  
 </head>  
 <body>  
@@ -285,7 +342,8 @@
     <button type="button" onclick="method2('tableExcel')">导出Excel方法二</button>  
     <button type="button" onclick="getXlsFromTbl('tableExcel','myDiv')">导出Excel方法三</button>  
     <button type="button" onclick="method4('tableExcel')">导出Excel方法四</button>  
-    <button type="button" onclick="method5('tableExcel')">导出Excel方法五</button>  
+    <button type="button" onclick="method5('tableExcel')">导出Excel方法五</button>
+    <button type="button" onclick="method5('tableExcel')">导出Excel方法6</button>  
 </div>  
 <div id="myDiv">  
 <table id="tableExcel" width="100%" border="1" cellspacing="0" cellpadding="0">  

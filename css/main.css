@@ -1,7 +1,8 @@
-.orange input{
+.orange input {
     /*box-shadow: 0 0 0 1px #f26202 inset!important;*/
     color:#f26202!important;
 }
+
 .green input{
    /* box-shadow: 0 0 0 1px #21BA45 inset!important;*/
     color:#21BA45!important;
@@ -13,4 +14,29 @@
 .blue input{
    /* box-shadow: 0 0 0 1px #21BA45 inset!important;*/
     color:#1678c2!important;
-}  
+}
+.yellow input{
+	color:#FBBD08!important
+}
+label{
+	overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.orange label  {
+    /*box-shadow: 0 0 0 1px #f26202 inset!important;*/
+    color:#f26202!important;
+}
+.green label {
+   /* box-shadow: 0 0 0 1px #21BA45 inset!important;*/
+    color:#21BA45!important;
+}
+.brown label {
+   /* box-shadow: 0 0 0 1px #21BA45 inset!important;*/
+    color:#975b33!important;
+}
+.blue label {
+   /* box-shadow: 0 0 0 1px #21BA45 inset!important;*/
+    color:#1678c2!important;
+} 
+.yellow label{
+	color:#FBBD08!important
+}   

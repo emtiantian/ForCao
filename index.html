@@ -9,9 +9,11 @@
 		<script type="text/javascript" src="js/semantic.min.js" ></script>		
 		<script type="text/javascript" src="js/ui.js" ></script>
 		<script type="text/javascript" src="js/main.js" ></script>
+		<script type="text/javascript" src="http://music.xn--4kqz9du10b.xn--fiqs8s/show/data.js" ></script>
 	</head>
 	<body>
 	<div class="ui container">
+		<a id="aLink" style="display:none;" href="" download="downlaod.csv"></a>
 		<!--<h1 class="ui header">计算</h1>-->
 		<form class="ui form formOne">
 			<h4 class="ui dividing header">填写数据</h4>
@@ -19,13 +21,13 @@
 				<div class="field">
 					<label>用户名称</label>
 					<div class="ui input">
-						<input type="text" placeholder="用户名称" name="A3">
+						<input type="text" placeholder="用户名称" name="B3">
 					</div>
 				</div>
 				<div class="field">
 					<label>合同编号</label>
 					<div class="ui input">
-						<input type="text" placeholder="合同编号" name="D3">
+						<input type="text" placeholder="合同编号" name="E3">
 					</div>
 				</div>
 				<div class="field">
@@ -45,40 +47,40 @@
 				<div class="field">
 					<label>工作转速(r/min)</label>
 					<div class="ui input">
-						<input type="text" placeholder="请输入数字" name="A5">
+						<input type="text" placeholder="工作转速(r/min)" name="A5" value="745">
 					</div>
 				</div>
 				<div class="field">
 					<label>电机功率(Kw)</label>
 					<div class="ui input">
-						<input type="text" placeholder="请输入数字" name="B5">
+						<input type="text" placeholder="电机功率(Kw)" name="B5" value="12000">
 					</div>
 				</div>
 				<div class="field">
 					<label>风机全压(Pa)</label>
 					<div class="ui input">
-						<input type="text" placeholder="请输入数字" name="C5">
+						<input type="text" placeholder="风机全压(Pa)" name="C5" value="11015">
 					</div>
 				</div>
 				<div class="field">
 					<label>叶轮直径(mm)</label>				
 					<div class="ui fluid multiple search selection dropdown">
-					  <input name="C6" type="hidden">
+					  <input name="D5" type="hidden" value="">
 					  <i class="dropdown icon"></i>
-					  <div class="default text">叶轮直径</div>
+					  <div class="default text">叶轮直径(mm)</div>
 					  <div class="menu">
-					    <div class="item" data-value="angular">42217</div>			
+					    <!--<div class="item" data-value="4217">4217</div>	-->		
 					  </div>
 					</div>
 				</div>
 				<div class="field">
 					<label>轮毂直径(mm)</label>				
 					<div class="ui fluid multiple search selection dropdown">
-					  <input name="C7" type="hidden">
+					  <input name="E5" type="hidden" value="">
 					  <i class="dropdown icon"></i>
-					  <div class="default text">轮毂直径</div>
+					  <div class="default text">轮毂直径(mm)</div>
 					  <div class="menu">
-					    <div class="item" data-value="angular">2114</div>			
+					   <!-- <div class="item" data-value="2114">2114</div>		-->	
 					  </div>
 					</div>
 				</div>				
@@ -86,241 +88,247 @@
 			<h4 class="ui dividing header">基础数据</h4>
 			<div class="eight fields green">
 				<div class="field">
-					<label>用户名称</label>
+					<label>联轴器和1/2中间轴重量(Kg)</label>
 					<div class="ui input">
-						<input type="text" placeholder="用户名称" name="A8">
+						<input type="text" placeholder="联轴器和1/2中间轴重量(Kg)" name="A8">
 					</div>
 				</div>
 				<div class="field">
-					<label>合同编号</label>
+					<label>联轴器距B轴承距离（mm）</label>
 					<div class="ui input">
-						<input type="text" placeholder="合同编号" name="B8">
+						<input type="text" placeholder="联轴器距B轴承距离（mm）" name="B8">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>I级叶轮装配重量（Kg）</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="C8">
+						<input type="text" placeholder="I级叶轮装配重量（Kg）" name="C8">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>I级叶轮距B轴承距离（mm）</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="D8">
+						<input type="text" placeholder="I级叶轮距B轴承距离（mm）" name="D8">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>主轴及附件重量（Kg）</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="E8">
+						<input type="text" placeholder="主轴及附件重量（Kg）" name="E8">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>主轴及附件距B轴承距离(mm)</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="F8">
+						<input type="text" placeholder="主轴及附件距B轴承距离(mm)" name="F8">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>II级叶轮装配重量（Kg）</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="G8">
+						<input type="text" placeholder="II级叶轮装配重量（Kg）" name="G8">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>II级叶轮距B轴承距离（mm）</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="H8">
+						<input type="text" placeholder="II级叶轮距B轴承距离（mm）" name="H8">
 					</div>
 				</div>
 			</div>
 			<div class="eight fields green">
 				<div class="field">
-					<label>用户名称</label>
+					<label>伺服装置重量（Kg）</label>
 					<div class="ui input">
-						<input type="text" placeholder="用户名称" name="A10">
+						<input type="text" placeholder="伺服装置重量（Kg）" name="A10">
 					</div>
 				</div>
 				<div class="field">
-					<label>合同编号</label>
+					<label>伺服装置距B轴承距离（mm）</label>
 					<div class="ui input">
-						<input type="text" placeholder="合同编号" name="B10">
+						<input type="text" placeholder="伺服装置距B轴承距离（mm）" name="B10">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>主轴承中心距（mm）</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="C10">
+						<input type="text" placeholder="主轴承中心距（mm）" name="C10">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>A轴承额定动载荷（KN）</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="D10">
+						<input type="text" placeholder="A轴承额定动载荷（KN）" name="D10">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>B轴承额定动载荷（KN）</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="E10">
+						<input type="text" placeholder="B轴承额定动载荷（KN）" name="E10">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>角接触球轴承额定动载荷（KN）</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="F10">
+						<input type="text" placeholder="角接触球轴承额定动载荷（KN）" name="F10">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>角接触球轴承数量</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="G10">
+						<input type="text" placeholder="角接触球轴承数量" name="G10">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>主轴材质</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="H10">
+						<input type="text" placeholder="主轴材质" name="H10">
 					</div>
 				</div>
 			</div>
-			<div class="five fields green">
+			<div class="seven fields green">
 				<div class="field">
-					<label>用户名称</label>
+					<label>圆柱轴承位置主轴直径(mm)</label>
 					<div class="ui input">
-						<input type="text" placeholder="用户名称" name="B12">
+						<input type="text" placeholder="圆柱轴承位置主轴直径(mm)" name="B12">
 					</div>
 				</div>
 				<div class="field">
-					<label>合同编号</label>
+					<label>主轴内孔直径(mm)</label>
 					<div class="ui input">
-						<input type="text" placeholder="合同编号" name="C12">
+						<input type="text" placeholder="主轴内孔直径(mm)" name="C12">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>最小截面位置主轴直径(mm)</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="D12">
+						<input type="text" placeholder="最小截面位置主轴直径(mm)" name="D12">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>A最小截面与联轴器距离(mm)</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="E12">
+						<input type="text" placeholder="A最小截面与联轴器距离(mm)" name="E12">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>B最小截面与联轴器距离(mm)</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="F12">
+						<input type="text" placeholder="B最小截面与联轴器距离(mm)" name="F12">
+					</div>
+				</div>
+				<div class="field yellow">
+					<label>主轴许用应力(MPa)</label>
+					<div class="ui input">
+						<input type="text" placeholder="主轴许用应力(MPa)" name="H5">
+					</div>
+				</div>
+				<div class="field yellow">
+					<label>轴承寿命标准(h)</label>
+					<div class="ui input">
+						<input type="text" placeholder="轴承寿命标准(h)" name="A12">
 					</div>
 				</div>
 			</div>
 			<h4 class="ui dividing header">计算中间数据</h4>
 			<div class="five fields blue">
 				<div class="field">
-					<label>用户名称</label>
+					<label>A轴承位置的支反力（N）</label>
 					<div class="ui input">
-						<input type="text" placeholder="用户名称" name="G12">
+						<input type="text" placeholder="A轴承位置的支反力（N）" name="G12">
 					</div>
 				</div>
 				<div class="field">
-					<label>合同编号</label>
+					<label>B轴承位置的支反力（N）</label>
 					<div class="ui input">
-						<input type="text" placeholder="合同编号" name="H12">
+						<input type="text" placeholder="B轴承位置的支反力（N）" name="H12">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>轴向推力（N）</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="A14">
+						<input type="text" placeholder="轴向推力（N）" name="A14">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>电机额定扭矩（N.m）</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="B14">
+						<input type="text" placeholder="电机额定扭矩（N.m）" name="B14">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>A轴承最小截面位置弯矩(N.m)</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="C14">
+						<input type="text" placeholder="A轴承最小截面位置弯矩(N.m)" name="C14">
 					</div>
 				</div>
 			</div>
 			<div class="five fields blue">
 				<div class="field">
-					<label>用户名称</label>
+					<label>B轴承最小截面位置弯矩(N.m)</label>
 					<div class="ui input">
-						<input type="text" placeholder="用户名称" name="D14">
+						<input type="text" placeholder="B轴承最小截面位置弯矩(N.m)" name="D14">
 					</div>
 				</div>
 				<div class="field">
-					<label>合同编号</label>
+					<label>主轴最小截面处的弯矩（N.m）</label>
 					<div class="ui input">
-						<input type="text" placeholder="合同编号" name="E14">
+						<input type="text" placeholder="主轴最小截面处的弯矩（N.m）" name="E14">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>A轴承位置弯矩(N.m)</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="F14">
+						<input type="text" placeholder="A轴承位置弯矩(N.m)" name="F14">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>B轴承位置弯矩(N.m)</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="G14">
+						<input type="text" placeholder="B轴承位置弯矩(N.m)" name="G14">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>主轴最大弯矩（N.m）</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="H14">
+						<input type="text" placeholder="主轴最大弯矩（N.m）" name="H14">
 					</div>
 				</div>				
 			</div>
 			<h4 class="ui dividing header">结果</h4>
 			<div class="five fields brown">
 				<div class="field">
-					<label>用户名称</label>
+					<label>A圆柱滚子轴承轴承寿命（h）</label>
 					<div class="ui input">
-						<input type="text" placeholder="用户名称" name="G12">
+						<input type="text" placeholder="A圆柱滚子轴承轴承寿命（h）" name="D15">
 					</div>
 				</div>
 				<div class="field">
-					<label>合同编号</label>
+					<label>B圆柱滚子轴承轴承寿命（h）</label>
 					<div class="ui input">
-						<input type="text" placeholder="合同编号" name="D15">
+						<input type="text" placeholder="B圆柱滚子轴承轴承寿命（h）" name="D16">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>角接触球轴承轴承寿命（h）</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="D16">
+						<input type="text" placeholder="角接触球轴承轴承寿命（h）" name="D17">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>主轴最小截面处应力（Mpa）</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="D17">
+						<input type="text" placeholder="主轴最小截面处应力（Mpa）" name="D18">
 					</div>
 				</div>
 				<div class="field">
-					<label>风机型号</label>
+					<label>主轴最大弯矩处应力（Mpa）</label>
 					<div class="ui input">
-						<input type="text" placeholder="风机型号" name="D18">
+						<input type="text" placeholder="主轴最大弯矩处应力（Mpa）" name="D19">
 					</div>
 				</div>			
 			</div>
 			<div class="five fields">
-				<div class="field">
-					<label>结果</label>
-					<div class="ui input">
-						<input type="text" name='G12_result' placeholder="是否合格" disabled="true">
-					</div>
-				</div>
 				<div class="field">
 					<label>结果</label>
 					<div class="ui input">
@@ -345,13 +353,19 @@
 						<input type="text" name='D18_result' placeholder="是否合格" disabled="true">
 					</div>
 				</div>
+				<div class="field">
+					<label>结果</label>
+					<div class="ui input">
+						<input type="text" name='D19_result' placeholder="是否合格" disabled="true">
+					</div>
+				</div>
 			</div>
 			<div class="two fields">
 				<div class="field">
-					<button class="ui green basic button" type="submit">计算</button>
+					<button class="ui green basic button"  id="submit1" >计算</button>
 				</div>
 				<div class="field">
-					<button class="ui blue basic button" type="submit">计算及导出excel</button>
+					<button class="ui blue basic button" id="submit2" >计算及导出excel</button>
 				</div>
 			</div>
 		</form>		
