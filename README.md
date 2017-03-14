@@ -1,12 +1,17 @@
-# ForCao
-	计算器 用来计算 部分数据
-		使用 semantic-ui, jquery ,node , node webkit, enigmavb(打包)
-			打包流程
-			*1.把全部文件压缩成zip 重名为xxx.nw
-			*2.与下载好的node webkit 中的nw.exe 通过 copy b 命令打包为一个文件
-			*3.使用 enigmavb 吧所有库文件与 上一步打包好的文件打包为一个完整的 exe 
-			*4.ok！
-			```cmd
-			nw.exe forCao.nw --remote-debugging-port=9222//cmd
-			```
-			![各种效果的具体写法](https://github.com/guodongxiaren/README)
+# ForCao	
+=====
+##计算器 用来计算 部分数据		
+====
+使用 semantic-ui, jquery ,node , node webkit, enigmavb(打包)
+打包流程
+*1.把全部文件压缩成zip 重名为xxx.nw
+*2.与下载好的node webkit 中的nw.exe 通过 copy b 命令打包为一个文件
+*3.使用 enigmavb 吧所有库文件与 上一步打包好的文件打包为一个完整的 exe 
+*4.ok！
+```cmd
+nw.exe forCao.nw --remote-debugging-port=9222//cmd
+```
+![各种效果的具体写法](https://github.com/guodongxiaren/README)
+```cpp
+string &operator+(const string& A,const string& B) //cpp
+```
