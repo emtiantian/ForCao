@@ -2,8 +2,8 @@
 	node webkit 
 		1.应该下载sdk版本不然没法调试 打不开F12
 		2.远程错误监听 
-		```common
-			nw.exe forCao.nw --remote-debugging-port=9222
+		```cmd
+			nw.exe forCao.nw --remote-debugging-port=9222//cmd
 		```
 		  高级哦！
 	node
@@ -14,4 +14,4 @@
 	semantic-ui
 	
 	readme.md
-		![各种效果的具体写法}(https://github.com/guodongxiaren/README)
+		![各种效果的具体写法](https://github.com/guodongxiaren/README)
