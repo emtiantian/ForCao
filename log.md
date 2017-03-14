@@ -7,7 +7,8 @@ nw.exe forCao.nw --remote-debugging-port=9222//cmd
 ```
 ## node
 1. 退出命令行 .exit 或者ctrl+c
-
+2. meteor.com 貌似是一个比较好的 快速开发框架
+3. Socket Stream 应该是一个很好的多屏互动框架
 ## js
 
 ## semantic-ui

@@ -182,7 +182,7 @@ $(function(){
 		//console.dir(data);
 	}
 
-
+	var fs = require('fs');
 	//生成excel
 	function createExcel (){
 			var str = "";
@@ -203,10 +203,10 @@ $(function(){
 				}				
 			})
 			str = nameStr+"\n"+valStr+"\n"+"\n"+"\n"+nameStr1+"\n"+valStr1+"\n"+resultStr
-	        //var uri = 'data:application/vnd.ms-excel;base64,', 
-	        var uri = ' data:text/csv;charset=utf-8;base64,',
+	        var uri = 'data:application/vnd.ms-excel;base64,', 
+	        //var uri = ' data:text/csv;charset=utf-8;base64,',
 	        base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
-	        window.location.href = uri + base64(str);
+	        window.location.href = uri + "77u/"+base64(str);
 //	        aLink.attr("href","data:text/csv;charset=utf-8,\ufeff"+str);  
 //	        aLink.click();  
 	}
