@@ -1,3 +1,4 @@
 *.zip
 *.rar
 /test/*
+/node_modules/*

@@ -37,6 +37,12 @@ $(function(){
 	var excelData = ["B3","E3","G3","A5","B5","C5","D5","E5","D15","D16","D17","D18","D19"]
 	//如果2个固定参数都选好了 匹配对应的data数据
 	function getData(a,b){
+		if(a||b){
+			
+		}else{
+			alert("请检查 叶轮直径或轮毂直径 是否填写");
+			return false;
+		}
 		var data = "";
 		$.each(dataJson, function(i,ele) {
 			if(ele.D5 == a && ele.E5 == b)
@@ -168,47 +174,109 @@ $(function(){
 			}
 		})
 		window['data'] = []
+
+		var showDataName = []
+		var showDataVal = []
+
+		var endDataName = []
+		var endDataVal = []
 		$.each(excelData, function(i,ele) {
 			var elementInput = $("input[name='"+ele+"']")
 			var labelHtml =	elementInput.parent().parent().find("label").html()
 			if(i<=8){
-				//展示填入数据			
-				window['data'].push({"name":labelHtml,"val":elementInput.val() })
+				//展示填入数据	
+				showDataName.push(labelHtml);
+				showDataVal.push(elementInput.val());
+				//window['data'].push({"name":labelHtml,"val":elementInput.val() })
 			}else{
 				//展示最终结果
-				window['data'].push({"name":labelHtml,"val":elementInput.val(),"result":$("input[name='"+ele+"_result']").val() })
-			}			
+				var endDataVal1 = []
+				endDataVal1.push(labelHtml);
+				endDataVal1.push(elementInput.val());
+				endDataVal1.push($("input[name='"+ele+"_result']").val());
+				endDataVal.push(endDataVal1); 
+				//window['data'].push({"name":labelHtml,"val":elementInput.val(),"result":$("input[name='"+ele+"_result']").val() })
+			}	
+			
 		});
-		//console.dir(data);
+		showDataName.push("计算日期")
+		showDataVal.push(showDate());
+		endDataName.push("计算项")
+		endDataName.push("最后结果")
+		endDataName.push("是否合格")
+		window['data'].push(showDataName,showDataVal,endDataName)
+		window['data'].push.apply( window['data'], endDataVal );
+		console.log(data);
+	}
+	function showDate(){
+	   var mydate = new Date();
+	   var str = "" + mydate.getFullYear() + "年";
+	   str += (mydate.getMonth()+1) + "月";
+	   str += mydate.getDate() + "日";
+	   return str;
+	  }
+
+	//js 生成excel 
+	function sheet_from_array_of_arrays(data, opts) {
+		var ws = {};
+		var range = {s: {c:10000000, r:10000000}, e: {c:0, r:0 }};
+		for(var R = 0; R != data.length; ++R) {
+			for(var C = 0; C != data[R].length; ++C) {
+				if(range.s.r > R) range.s.r = R;
+				if(range.s.c > C) range.s.c = C;
+				if(range.e.r < R) range.e.r = R;
+				if(range.e.c < C) range.e.c = C;
+				var cell = {v: data[R][C] };
+				if(cell.v == null) continue;
+				var cell_ref = XLSX.utils.encode_cell({c:C,r:R});
+				
+				if(typeof cell.v === 'number') cell.t = 'n';
+				else if(typeof cell.v === 'boolean') cell.t = 'b';
+				else if(cell.v instanceof Date) {
+					cell.t = 'n'; cell.z = XLSX.SSF._table[14];
+					cell.v = cell.v;
+				}
+				else cell.t = 's';
+				
+				ws[cell_ref] = cell;
+			}
+		}
+		if(range.s.c < 10000000) ws['!ref'] = XLSX.utils.encode_range(range);
+		return ws;
+	}
+ 
+
+ 
+	function Workbook() {
+		if(!(this instanceof Workbook)) return new Workbook();
+		this.SheetNames = [];
+		this.Sheets = {};
+	}
+ 
+
+
+	function s2ab(s) {
+		var buf = new ArrayBuffer(s.length);
+		var view = new Uint8Array(buf);
+		for (var i=0; i!=s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+		return buf;
 	}
 
-	var fs = require('fs');
-	//生成excel
-	function createExcel (){
-			var str = "";
-			var nameStr = '';
-			var valStr = "";
-			var nameStr1 = '';
-			var valStr1 = "";
-			var resultStr = '';
-			var aLink = $("#aLink")
-			$.each(data,function(i,ele){
-				if(!ele.result){
-					nameStr += ele.name + ",";
-					valStr += ele.val +",";
-				}else{
-					nameStr1 += ele.name + ",";
-					valStr1 += ele.val +",";
-					resultStr =  ele.result + ","; 					
-				}				
-			})
-			str = nameStr+"\n"+valStr+"\n"+"\n"+"\n"+nameStr1+"\n"+valStr1+"\n"+resultStr
-	        var uri = 'data:application/vnd.ms-excel;base64,', 
-	        //var uri = ' data:text/csv;charset=utf-8;base64,',
-	        base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
-	        window.location.href = uri + "77u/"+base64(str);
-//	        aLink.attr("href","data:text/csv;charset=utf-8,\ufeff"+str);  
-//	        aLink.click();  
+	function createExcelJs (){
+		/* original data */
+		
+		
+		
+		
+		//var data = [[1,2,3],[true, false, null, "sheetjs"],["foo","bar",new Date(), "0.3"], ["baz", null, "qux"]]
+		var ws_name = data[1][0]||"null";
+		var wb = new Workbook(), ws = sheet_from_array_of_arrays(data); 
+		/* add worksheet to workbook */
+		wb.SheetNames.push(ws_name);
+		wb.Sheets[ws_name] = ws;
+		var wbout = XLSX.write(wb, {bookType:'xlsx', bookSST:true, type: 'binary'});
+		saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), ws_name+".xlsx")
+		return false;
 	}
 	
 	function init (){
@@ -218,12 +286,14 @@ $(function(){
 　　		}
 		initUI();
 	}
+	
 	init();
 	
 	//事件监听
 	$("#submit1").on("click",function(e){
 		//console.log(getData(4217,2114));
-		setData(getData(4217,2114));
+		//setData(getData(4217,2114));
+		setData(getData($("input[name='D5']").val(),$("input[name='E5']").val()));
 		calculation();
 		//console.log((4217/1000)^2);
 		//console.log((4.217*4.217-2.114*2.114 )*11015)
@@ -232,12 +302,15 @@ $(function(){
 	})
 	$("#submit2").on("click",function(e){
 		//console.log(getData(4217,2114));
-		setData(getData(4217,2114));
+		//setData(getData(4217,2114));
+		setData(getData($("input[name='D5']").val(),$("input[name='E5']").val()));
 		calculation();
 		//console.log((4217/1000)^2);
 		//console.log((4.217*4.217-2.114*2.114 )*11015)
 		//console.log(Math.PI/4*146654.73439499995)
-		createExcel();
+		//
+		//createExcel();
+		createExcelJs();
 		return false;
 	})
 	
