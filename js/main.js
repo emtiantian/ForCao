@@ -1,35 +1,33 @@
 	
 $(function(){
 	//固定数据
-//	var dataJson = [
-//  {
-//      "D5": "4217",
-//      "E5": "2114",
-//      "A8": "4690",
-//      "B8": "1560",
-//      "C8": "8200",
-//      "D8": "1250.5",
-//      "E8": "840",
-//      "F8": "316.5",
-//      "G8": "8330",
-//      "H8": "607.5",
-//      "A10": "1070",
-//      "B10": "1090",
-//      "C10": "643",
-//      "D10": "1600",
-//      "E10": "1600",
-//      "F10": "465",
-//      "G10": "2",
-//      "H10": "42CrMo",
-//      "B12": "300",
-//      "C12": "90",
-//      "D12": "289",
-//      "E12": "729.5",
-//      "F12": "1747.5",
-//      "H5": "40000",
-//      "A12": "75"
-//  }
-//]
+	var database = [
+    {      
+        "A8": " ",
+        "B8": " ",
+        "C8": " ",
+        "D8": " ",
+        "E8": " ",
+        "F8": " ",
+        "G8": " ",
+        "H8": " ",
+        "A10": " ",
+        "B10": " ",
+        "C10": " ",
+        "D10": " ",
+        "E10": " ",
+        "F10": " ",
+        "G10": " ",
+        "H10": " ",
+        "B12": " ",
+        "C12": " ",
+        "D12": " ",
+        "E12": " ",
+        "F12": " ",
+        "H5": " ",
+        "A12": " "
+    }
+]
 	//var dataJson = $.getJSON("http://music.xn--4kqz9du10b.xn--fiqs8s/show/data.json");
 	
 	var middleData  = ["G12","H12","A14","B14","C14","D14","E14","F14","G14","H14","D15","D16","D17","D18","D19"]
@@ -37,12 +35,12 @@ $(function(){
 	var excelData = ["B3","E3","G3","A5","B5","C5","D5","E5","D15","D16","D17","D18","D19"]
 	//如果2个固定参数都选好了 匹配对应的data数据
 	function getData(a,b){
-		if(a||b){
-			
-		}else{
-			alert("请检查 叶轮直径或轮毂直径 是否填写");
-			return false;
-		}
+//		if(a&&b){
+//			
+//		}else{
+//			alert("请检查 叶轮直径或轮毂直径 是否填写");
+//			return false;
+//		}
 		var data = "";
 		$.each(dataJson, function(i,ele) {
 			if(ele.D5 == a && ele.E5 == b)
@@ -56,7 +54,7 @@ $(function(){
 		return parseInt(a)>parseInt(b);
 	}
 	
-		function initUI() {
+	function initUI() {
 		$(".form").form({
 			on: 'blur',
 			fields: {
@@ -109,6 +107,10 @@ $(function(){
 	
 		
 	function setData(data){
+		if(data == ""){
+			data=database[0]
+		}
+		//console.log(data);
 		for(var prop in data){ 
 			//console.log(prop+" : "+data[prop]);
 			$("input[name = "+prop +"]").val(data[prop])	
@@ -206,7 +208,7 @@ $(function(){
 		endDataName.push("是否合格")
 		window['data'].push(showDataName,showDataVal,endDataName)
 		window['data'].push.apply( window['data'], endDataVal );
-		console.log(data);
+		//console.log(data);
 	}
 	function showDate(){
 	   var mydate = new Date();
@@ -263,11 +265,7 @@ $(function(){
 	}
 
 	function createExcelJs (){
-		/* original data */
-		
-		
-		
-		
+		/* original data */				
 		//var data = [[1,2,3],[true, false, null, "sheetjs"],["foo","bar",new Date(), "0.3"], ["baz", null, "qux"]]
 		var ws_name = data[1][0]||"null";
 		var wb = new Workbook(), ws = sheet_from_array_of_arrays(data); 
@@ -290,6 +288,16 @@ $(function(){
 	init();
 	
 	//事件监听
+	$(".ui .dropdown input").on("change",function(e){
+		//console.log("监听");
+		setData(getData($("input[name='D5']").val(),$("input[name='E5']").val()));
+		
+//		if($("input[name='D5']").val()&&$("input[name='E5']").val()){
+//			setData(getData($("input[name='D5']").val(),$("input[name='E5']").val()));
+//		}else{
+//			
+//		}
+	})
 	$("#submit1").on("click",function(e){
 		//console.log(getData(4217,2114));
 		//setData(getData(4217,2114));
@@ -303,7 +311,7 @@ $(function(){
 	$("#submit2").on("click",function(e){
 		//console.log(getData(4217,2114));
 		//setData(getData(4217,2114));
-		setData(getData($("input[name='D5']").val(),$("input[name='E5']").val()));
+		//setData(getData($("input[name='D5']").val(),$("input[name='E5']").val()));
 		calculation();
 		//console.log((4217/1000)^2);
 		//console.log((4.217*4.217-2.114*2.114 )*11015)

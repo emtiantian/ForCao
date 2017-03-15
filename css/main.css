@@ -1,5 +1,6 @@
+
 .container{
-	margin-top: 20px;
+	padding-top: 20px;
 }
 .orange input {
     /*box-shadow: 0 0 0 1px #f26202 inset!important;*/
@@ -19,7 +20,8 @@
     color:#1678c2!important;
 }
 .yellow input{
-	color:#FBBD08!important
+	/*color:#FBBD08!important*/
+	color:#1B1C1D!important;
 }
 label{
 	overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
@@ -41,5 +43,6 @@ label{
     color:#1678c2!important;
 } 
 .yellow label{
-	color:#FBBD08!important
+	/* color:#FBBD08!important*/
+	color:#1B1C1D!important;
 }   

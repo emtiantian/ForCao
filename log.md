@@ -2,6 +2,7 @@
 ## node webkit 
 1. 应该下载sdk版本不然没法调试 打不开F12
 2. 远程错误监听(高级哦！)
+3. node webkit在最外层使用margin 会导致页面出现滚动条
 ```cmd
 nw.exe forCao.nw --remote-debugging-port=9222//cmd
 ```

@@ -12,19 +12,15 @@
     "icon": "link.png",
     "toolbar": true,
     "always-on-top": true,
+    "position":"center",
     "frame": true,
-    "width": 1920,
-    "height": 1080,
-    "min_width": 1200,
-    "min_height": 900,
+    "width": 1200,
+    "height": 1000,
     "max_width": 1920,
     "max_height": 1080
   },
   "webkit": {
     "plugin": false
-  },
-  "dependencies": {
-    "node-xlsx": "^0.7.4"
   },
   "repository": {
     "type": "git",
