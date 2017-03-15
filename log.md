@@ -28,6 +28,25 @@ alert(txt)
 return true
 }
 ``` 
+2. jquery添加带有!important的css 属性的时候可以这样
+``` js
+$(element).css("cssText","opacity:1 !important");
+```
+3. js 生成excle 可以用xslx.js
+``` js
+//设置列宽
+ws['!cols'].push({  
+         wpx: 170  
+      });  
+//设置单元格颜色
+ var cell = {  
+                v : data[R][C],  
+                s:{  
+                    fill: { fgColor: { rgb: "33000000"}},  
+                    alignment: {horizontal: "center" ,vertical: "center"},  
+                 }  
+            };      
+```
 ## semantic-ui
 	
 ## readme.md

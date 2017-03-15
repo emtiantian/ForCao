@@ -160,18 +160,18 @@ $(function(){
 			if(i<=2){
 				if(window[ele] > H5 ){
 					//合格
-					$("input[name='"+ele+"_result']").val("合格").addClass("ui basic button green").removeClass("red");
+					$("input[name='"+ele+"_result']").val("合格").addClass("ui basic button green").removeClass("red").css("cssText","opacity:1 !important");
 				}else{
 					//不合格
-					$("input[name='"+ele+"_result']").val("不合格").addClass("ui basic button red").removeClass("green");
+					$("input[name='"+ele+"_result']").val("不合格").addClass("ui basic button red").removeClass("green").css("cssText","opacity:1 !important");
 				}				
 			}else{
 				if(window[ele] < A12 ){
 					//合格
-					$("input[name='"+ele+"_result']").val("合格").addClass("ui basic button green").removeClass("red");
+					$("input[name='"+ele+"_result']").val("合格").addClass("ui basic button green").removeClass("red").css("cssText","opacity:1 !important");
 				}else{
 					//不合格
-					$("input[name='"+ele+"_result']").val("不合格").addClass("ui basic button red").removeClass("green");
+					$("input[name='"+ele+"_result']").val("不合格").addClass("ui basic button red").removeClass("green").css("cssText","opacity:1 !important");
 				}
 			}
 		})
@@ -185,7 +185,7 @@ $(function(){
 		$.each(excelData, function(i,ele) {
 			var elementInput = $("input[name='"+ele+"']")
 			var labelHtml =	elementInput.parent().parent().find("label").html()
-			if(i<=8){
+			if(i<=7){
 				//展示填入数据	
 				showDataName.push(labelHtml);
 				showDataVal.push(elementInput.val());
@@ -221,6 +221,12 @@ $(function(){
 	//js 生成excel 
 	function sheet_from_array_of_arrays(data, opts) {
 		var ws = {};
+		ws['!cols']= [];  
+	    for(var n = 0; n != data[0].length; ++n){  
+	        ws['!cols'].push({  
+	         wpx: 170  
+	      });  
+	    }
 		var range = {s: {c:10000000, r:10000000}, e: {c:0, r:0 }};
 		for(var R = 0; R != data.length; ++R) {
 			for(var C = 0; C != data[R].length; ++C) {
@@ -228,7 +234,7 @@ $(function(){
 				if(range.s.c > C) range.s.c = C;
 				if(range.e.r < R) range.e.r = R;
 				if(range.e.c < C) range.e.c = C;
-				var cell = {v: data[R][C] };
+				var cell = {v: data[R][C] };			
 				if(cell.v == null) continue;
 				var cell_ref = XLSX.utils.encode_cell({c:C,r:R});
 				

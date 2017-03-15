@@ -1,14 +1,14 @@
 {
   "main": "index.html",
   "name": "nw-demo",
-  "description": "电力计算器",
+  "description": "计算程序",
   "version": "0.1.0",
   "keywords": [
     "calculation",
     "forCao"
   ],
   "window": {
-    "title": "电力计算器",
+    "title": "计算程序",
     "icon": "link.png",
     "toolbar": true,
     "always-on-top": true,
