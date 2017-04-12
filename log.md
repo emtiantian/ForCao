@@ -47,6 +47,10 @@ ws['!cols'].push({
                  }  
             };      
 ```
+4. js可以打印~
+``` js
+print();
+```
 ## semantic-ui
 	
 ## readme.md
